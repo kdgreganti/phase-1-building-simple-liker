@@ -4,6 +4,34 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
+const emptyHeart = document.getElementById('empty-heart');
+const fullHeart = document.getElementById('full-heart');
+const errorModal = document.getElementById('error-modal');
+
+emptyHeart.addEventListener('click', () => {
+  mimicServerCall()
+  .then(() => {
+    fullHeart.innerText = FULL_HEART;
+    fullHeart.classList.add('activated-heart');
+  })
+  .catch (() => {
+    errorModal.classList.remove('hidden');
+    displayErrorMessage('Server error  message');
+    setTimeout(() => {
+      errorModal.add('hidden');
+    }, 3000);
+  });
+});
+
+fullHeart.addEventListener('click', () => {
+    fullHeart.innerText = EMPTY_HEART;
+    fullHeart.classList.add('activated-heart');
+  });
+  
+  
+
+
+
 
 
 
